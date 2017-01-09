@@ -104,6 +104,39 @@
           <latest>now</latest>
         </search>
       </chart>
+            <chart depends="$one$">
+        <title>KPI Timechart by</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$one$| timechart count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+      </chart>
+            <table depends="$one$">
+        <title>KPI1 Stats 1st level</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$one$| stats count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+            <table depends="$one$">
+        <title>KPI1 Stats 2nd level</title>
+        <search>
+          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
     </panel>
     <panel depends="$two$">
       <input type="time" token="field3">
@@ -131,6 +164,39 @@
           <latest>now</latest>
         </search>
       </chart>
+      <chart depends="$two$">
+        <title>KP2 Timechart by</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$two$| timechart count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+      </chart>
+            <table depends="$two$">
+        <title>KPI2 Stats 1st level</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$two$| stats count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+            <table depends="$two$">
+        <title>KPI2 Stats 2nd level</title>
+        <search>
+          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
     </panel>
     <panel depends="$three$">
       <input type="time" token="field4">
@@ -158,6 +224,39 @@
           <latest>now</latest>
         </search>
       </chart>
+            <chart depends="$three$">
+        <title>KP3 Timechart by</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$three$| timechart count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+      </chart>
+          <table depends="$three$">
+        <title>KPI3 Stats 1st level</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$three$| stats count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+            <table depends="$three$">
+        <title>KPI3 Stats 2nd level</title>
+        <search>
+          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
     </panel>
     <panel depends="$four$">
       <input type="time" token="field5">
@@ -185,43 +284,7 @@
           <latest>now</latest>
         </search>
       </chart>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <chart depends="$one$">
-        <title>KPI Timechart by</title>
-        <search>
-          <query>index=_internal sourcetype=* index!=$one$| timechart count by sourcetype</query>
-          <earliest>-60m@m</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="charting.chart">line</option>
-      </chart>
-    </panel>
-    <panel>
-      <chart depends="$two$">
-        <title>KP2 Timechart by</title>
-        <search>
-          <query>index=_internal sourcetype=* index!=$two$| timechart count by sourcetype</query>
-          <earliest>-60m@m</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="charting.chart">line</option>
-      </chart>
-    </panel>
-    <panel>
-      <chart depends="$three$">
-        <title>KP3 Timechart by</title>
-        <search>
-          <query>index=_internal sourcetype=* index!=$three$| timechart count by sourcetype</query>
-          <earliest>-60m@m</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="charting.chart">line</option>
-      </chart>
-    </panel>
-    <panel>
+ 
       <chart depends="$four$">
         <title>KP4 Timechart by</title>
         <search>
@@ -231,52 +294,7 @@
         </search>
         <option name="charting.chart">line</option>
       </chart>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <table depends="$one$">
-        <title>KPI1 Stats 1st level</title>
-        <search>
-          <query>index=_internal sourcetype=* index!=$one$| stats count by sourcetype</query>
-          <earliest>-60m@m</earliest>
-          <latest>now</latest>
-        </search>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-    </panel>
-    <panel>
-      <table depends="$two$">
-        <title>KPI2 Stats 1st level</title>
-        <search>
-          <query>index=_internal sourcetype=* index!=$two$| stats count by sourcetype</query>
-          <earliest>-60m@m</earliest>
-          <latest>now</latest>
-        </search>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-    </panel>
-    <panel>
-      <table depends="$three$">
-        <title>KPI3 Stats 1st level</title>
-        <search>
-          <query>index=_internal sourcetype=* index!=$three$| stats count by sourcetype</query>
-          <earliest>-60m@m</earliest>
-          <latest>now</latest>
-        </search>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-    </panel>
-    <panel>
+
       <table depends="$four$">
         <title>KPI4 Stats 1st level</title>
         <search>
@@ -289,52 +307,7 @@
           <scale type="threshold">0,30,70,100</scale>
         </format>
       </table>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <table depends="$one$">
-        <title>KPI1 Stats 2nd level</title>
-        <search>
-          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
-          <earliest>-24h@h</earliest>
-          <latest>now</latest>
-        </search>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-    </panel>
-    <panel>
-      <table depends="$two$">
-        <title>KPI2 Stats 2nd level</title>
-        <search>
-          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
-          <earliest>-4h@m</earliest>
-          <latest>now</latest>
-        </search>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-    </panel>
-    <panel>
-      <table depends="$three$">
-        <title>KPI3 Stats 2nd level</title>
-        <search>
-          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
-          <earliest>-4h@m</earliest>
-          <latest>now</latest>
-        </search>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-    </panel>
-    <panel>
+
       <table depends="$four$">
         <title>KPI4 Stats 2nd level</title>
         <search>

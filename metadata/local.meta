@@ -12,3 +12,8 @@ export = none
 owner = admin
 version = 6.5.1
 modtime = 1483935321.949018000
+
+[views/kpi_v11]
+owner = admin
+version = 6.5.1
+modtime = 1483936574.615385000
