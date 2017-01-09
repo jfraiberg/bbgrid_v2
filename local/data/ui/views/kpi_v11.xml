@@ -1,6 +1,5 @@
 <form script="showtokens.js">
-  <label>KPI_v1.1</label>
-  <fieldset submitButton="false"></fieldset>
+  <label>KPI_v1.1</label>&gt;<fieldset submitButton="false"></fieldset>
   <row>
     <panel>
       <single id="one">
@@ -380,10 +379,9 @@
         <option name="charting.legend.placement">bottom</option>
       </chart>
     </panel>
-      
   </row>
-  <row depends="$one$">
-    <panel>
+  <row>
+    <panel depends="$one$">
       <input type="text" token="searchterm">
         <label>Search Filter</label>
         <default>host=* *</default>
@@ -401,7 +399,7 @@
         <option name="showPager">1</option>
       </event>
     </panel>
-    <panel>
+    <panel depends="$two$">
       <input type="text" token="searchterm2">
         <label>Search Filter</label>
         <default>host=* *</default>
@@ -419,7 +417,25 @@
         <option name="showPager">1</option>
       </event>
     </panel>
-      <panel depends="$four$">
+    <panel depends="$three$">
+      <input type="text" token="searchterm3">
+        <label>Search Filter</label>
+        <default>host=* *</default>
+        <initialValue>host=* *</initialValue>
+      </input>
+      <event>
+        <title>Events</title>
+        <search>
+          <query>index=_internal $searchterm3$</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">5</option>
+        <option name="rowNumbers">0</option>
+        <option name="showPager">1</option>
+      </event>
+    </panel>
+    <panel depends="$four$">
       <input type="text" token="searchterm4">
         <label>Search Filter</label>
         <default>host=* *</default>
@@ -438,8 +454,4 @@
       </event>
     </panel>
   </row>
->
-
-
-  
 </form>
