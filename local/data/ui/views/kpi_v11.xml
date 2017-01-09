@@ -20,6 +20,15 @@
           <set token="one">$one$</set>
         </drilldown>
       </single>
+      <html>
+<body>
+
+<button type="button" onclick="alert('Hello world!')">Collapse Details</button>
+ 
+</body>
+</html>
+    </panel>
+    <panel>
       <single id="two">
         <search>
           <query>index=_internal | timechart count</query>
@@ -39,6 +48,15 @@
           <set token="two">$two$</set>
         </drilldown>
       </single>
+      <html>
+<body>
+
+<button type="button" onclick="alert('Hello world!')">Collapse Details</button>
+ 
+</body>
+</html>
+    </panel>
+    <panel>
       <single id="three">
         <search>
           <query>index=_internal | timechart count</query>
@@ -58,6 +76,15 @@
           <set token="three">$three$</set>
         </drilldown>
       </single>
+      <html>
+<body>
+
+<button type="button" onclick="alert('Hello world!')">Collapse Details</button>
+ 
+</body>
+</html>
+    </panel>
+    <panel>
       <single id="four">
         <search>
           <query>index=_internal | timechart count</query>
@@ -75,6 +102,13 @@
           <set token="four">$four$</set>
         </drilldown>
       </single>
+      <html>
+<body>
+
+<button type="button" onclick="alert('Hello world!')">Collapse Details</button>
+ 
+</body>
+</html>
     </panel>
   </row>
   <row>
@@ -96,7 +130,7 @@
         <default>Dev,Prod_NJ,Alpha,Beta,Prod_NY</default>
         <delimiter> </delimiter>
       </input>
-            <table depends="$one$">
+      <table depends="$one$">
         <title>KPI1 Stats 1st level</title>
         <search>
           <query>index=_internal sourcetype=* index!=$one$| stats count by sourcetype</query>
@@ -111,19 +145,6 @@
       </table>
       <table depends="$one$">
         <title>KPI1 Stats 2nd level</title>
-        <search>
-          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
-          <earliest>-24h@h</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="count">5</option>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-       <table depends="$one$">
-        <title>KPI1 Stats 3rd level</title>
         <search>
           <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
           <earliest>-24h@h</earliest>
@@ -157,7 +178,6 @@
         <option name="charting.chart">line</option>
         <option name="charting.legend.placement">bottom</option>
       </chart>
-
     </panel>
     <panel depends="$two$">
       <input type="time" token="field3">
@@ -177,7 +197,7 @@
         <default>Dev,Prod_NJ,Alpha,Beta,Prod_NY</default>
         <delimiter> </delimiter>
       </input>
-            <table depends="$two$">
+      <table depends="$two$">
         <title>KPI2 Stats 1st level</title>
         <search>
           <query>index=_internal sourcetype=* index!=$two$| stats count by sourcetype</query>
@@ -192,19 +212,6 @@
       </table>
       <table depends="$two$">
         <title>KPI2 Stats 2nd level</title>
-        <search>
-          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
-          <earliest>-4h@m</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="count">5</option>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-            <table depends="$two$">
-        <title>KPI2 Stats 3rd level</title>
         <search>
           <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
           <earliest>-4h@m</earliest>
@@ -238,7 +245,6 @@
         <option name="charting.chart">line</option>
         <option name="charting.legend.placement">bottom</option>
       </chart>
-
     </panel>
     <panel depends="$three$">
       <input type="time" token="field4">
@@ -258,7 +264,7 @@
         <default>Dev,Prod_NJ,Alpha,Beta,Prod_NY</default>
         <delimiter> </delimiter>
       </input>
-            <table depends="$three$">
+      <table depends="$three$">
         <title>KPI3 Stats 1st level</title>
         <search>
           <query>index=_internal sourcetype=* index!=$three$| stats count by sourcetype</query>
@@ -273,19 +279,6 @@
       </table>
       <table depends="$three$">
         <title>KPI3 Stats 2nd level</title>
-        <search>
-          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
-          <earliest>-4h@m</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="count">5</option>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-           <table depends="$three$">
-        <title>KPI3 Stats 3rd level</title>
         <search>
           <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
           <earliest>-4h@m</earliest>
@@ -319,7 +312,6 @@
         <option name="charting.chart">line</option>
         <option name="charting.legend.placement">bottom</option>
       </chart>
-
     </panel>
     <panel depends="$four$">
       <input type="time" token="field5">
@@ -339,7 +331,7 @@
         <default>Dev,Prod_NJ,Alpha,Beta,Prod_NY</default>
         <delimiter> </delimiter>
       </input>
-            <table depends="$four$">
+      <table depends="$four$">
         <title>KPI4 Stats 1st level</title>
         <search>
           <query>index=_internal sourcetype=* index!=$four$| stats count by sourcetype</query>
@@ -354,19 +346,6 @@
       </table>
       <table depends="$four$">
         <title>KPI4 Stats 2nd level</title>
-        <search>
-          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
-          <earliest>-4h@m</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="count">5</option>
-        <format type="color" field="count">
-          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
-          <scale type="threshold">0,30,70,100</scale>
-        </format>
-      </table>
-            <table depends="$four$">
-        <title>KPI4 Stats 3rd level</title>
         <search>
           <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
           <earliest>-4h@m</earliest>
@@ -400,7 +379,84 @@
         <option name="charting.chart">line</option>
         <option name="charting.legend.placement">bottom</option>
       </chart>
-
+    </panel>
+  </row>
+  <row depends="$one$">
+    <panel>
+      <input type="text" token="searchterm">
+        <label>Search Filter</label>
+        <default>host=* *</default>
+        <initialValue>host=* *</initialValue>
+      </input>
+      <event>
+        <title>Events</title>
+        <search>
+          <query>index=_internal $searchterm$</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">5</option>
+        <option name="rowNumbers">0</option>
+        <option name="showPager">1</option>
+      </event>
+    </panel>
+    <panel>
+      <input type="text" token="searchterm2">
+        <label>Search Filter</label>
+        <default>host=* *</default>
+        <initialValue>host=* *</initialValue>
+      </input>
+      <event>
+        <title>Events</title>
+        <search>
+          <query>index=_internal $searchterm2$</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">5</option>
+        <option name="rowNumbers">0</option>
+        <option name="showPager">1</option>
+      </event>
+    </panel>
+  </row>
+  <row depends="$three$">
+    <panel>
+      <input type="text" token="searchterm3">
+        <label>Search Filter</label>
+        <default>host=* *</default>
+        <initialValue>host=* *</initialValue>
+      </input>
+      <event>
+        <title>Events</title>
+        <search>
+          <query>index=_internal $searchterm3$</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">5</option>
+        <option name="rowNumbers">0</option>
+        <option name="showPager">1</option>
+      </event>
+    </panel>
+  </row>
+  <row depends="$four$">
+    <panel>
+      <input type="text" token="searchterm4">
+        <label>Search Filter</label>
+        <default>host=* *</default>
+        <initialValue>host=* *</initialValue>
+      </input>
+      <event>
+        <title>Events</title>
+        <search>
+          <query>index=_internal $searchterm4$</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">5</option>
+        <option name="rowNumbers">0</option>
+        <option name="showPager">1</option>
+      </event>
     </panel>
   </row>
 </form>
