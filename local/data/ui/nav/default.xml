@@ -1,0 +1,6 @@
+<nav search_view="search" color="#00000">
+  <view name="search"/>
+  <view name="dashboards" />
+  <view name="kpi_v11"  default='true' />
+  
+</nav>
