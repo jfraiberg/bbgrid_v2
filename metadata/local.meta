@@ -6,7 +6,9 @@ modtime = 1483883001.585785000
 version = 6.5.1
 modtime = 1483883001.586518000
 
-[views/bbgrid_v2]
+[views/kpi_v1]
+access = read : [ * ], write : [ admin ]
+export = none
 owner = admin
 version = 6.5.1
-modtime = 1483885825.847135000
+modtime = 1483935321.949018000

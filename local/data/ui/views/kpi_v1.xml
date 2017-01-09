@@ -1,0 +1,352 @@
+<form script="showtokens.js">
+  <label>KPI_v1</label>
+  <fieldset submitButton="false"></fieldset>
+  <row>
+    <panel>
+      <single id="one">
+        <search>
+          <query>index=_internal | timechart count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <!-- Set the type of of drilldown, since we will always consume the same field, use row-->
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="underLabel">KPI1</option>
+        <option name="useColors">1</option>
+        <drilldown>
+          <!-- Use set to specify the new token to be created.
+                     Use any token from the page or from the click event to produce the value needed. -->
+          <set token="one">$one$</set>
+        </drilldown>
+      </single>
+      <single id="two">
+        <search>
+          <query>index=_internal | timechart count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <!-- Set the type of of drilldown, since we will always consume the same field, use row-->
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="rangeColors">["0x65a637","0x6db7c6","0xf7bc38","0xd93f3c"]</option>
+        <option name="rangeValues">[0,30,160]</option>
+        <option name="underLabel">KPI2</option>
+        <option name="useColors">1</option>
+        <drilldown>
+          <!-- Use set to specify the new token to be created.
+                     Use any token from the page or from the click event to produce the value needed. -->
+          <set token="two">$two$</set>
+        </drilldown>
+      </single>
+      <single id="three">
+        <search>
+          <query>index=_internal | timechart count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <!-- Set the type of of drilldown, since we will always consume the same field, use row-->
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="rangeColors">["0x65a637","0xd93f3c"]</option>
+        <option name="rangeValues">[200]</option>
+        <option name="underLabel">KPI3</option>
+        <option name="useColors">1</option>
+        <drilldown>
+          <!-- Use set to specify the new token to be created.
+                     Use any token from the page or from the click event to produce the value needed. -->
+          <set token="three">$three$</set>
+        </drilldown>
+      </single>
+      <single id="four">
+        <search>
+          <query>index=_internal | timechart count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <!-- Set the type of of drilldown, since we will always consume the same field, use row-->
+        <option name="colorMode">block</option>
+        <option name="drilldown">all</option>
+        <option name="underLabel">KPI4</option>
+        <option name="useColors">1</option>
+        <drilldown>
+          <!-- Use set to specify the new token to be created.
+                     Use any token from the page or from the click event to produce the value needed. -->
+          <set token="four">$four$</set>
+        </drilldown>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel depends="$one$">
+      <input type="time" token="field2">
+        <label></label>
+        <default>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
+      <input type="multiselect" token="field1">
+        <label></label>
+        <choice value="Dev">Dev</choice>
+        <choice value="Prod_NJ">Prod NJ</choice>
+        <choice value="Alpha">Alpha</choice>
+        <choice value="Beta">Beta</choice>
+        <choice value="Prod_NY">Prod NY</choice>
+        <default>Dev,Prod_NJ,Alpha,Beta,Prod_NY</default>
+        <delimiter> </delimiter>
+      </input>
+      <chart depends="$one$">
+        <title>KPI1 Timechart</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$one$ | timechart count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+      </chart>
+    </panel>
+    <panel depends="$two$">
+      <input type="time" token="field3">
+        <label></label>
+        <default>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
+      <input type="multiselect" token="field1">
+        <label></label>
+        <choice value="Dev">Dev</choice>
+        <choice value="Prod_NJ">Prod NJ</choice>
+        <choice value="Alpha">Alpha</choice>
+        <choice value="Beta">Beta</choice>
+        <choice value="Prod_NY">Prod NY</choice>
+        <default>Dev,Prod_NJ,Alpha,Beta,Prod_NY</default>
+        <delimiter> </delimiter>
+      </input>
+      <chart depends="$two$">
+        <title>KPI2 Timechart</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$two$| timechart count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+      </chart>
+    </panel>
+    <panel depends="$three$">
+      <input type="time" token="field4">
+        <label></label>
+        <default>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
+      <input type="multiselect" token="field1">
+        <label></label>
+        <choice value="Dev">Dev</choice>
+        <choice value="Prod_NJ">Prod NJ</choice>
+        <choice value="Alpha">Alpha</choice>
+        <choice value="Beta">Beta</choice>
+        <choice value="Prod_NY">Prod NY</choice>
+        <default>Dev,Prod_NJ,Alpha,Beta,Prod_NY</default>
+        <delimiter> </delimiter>
+      </input>
+      <chart depends="$three$">
+        <title>KPI3 Timechart</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$three$| timechart count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+      </chart>
+    </panel>
+    <panel depends="$four$">
+      <input type="time" token="field5">
+        <label></label>
+        <default>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </default>
+      </input>
+      <input type="multiselect" token="field1">
+        <label></label>
+        <choice value="Dev">Dev</choice>
+        <choice value="Prod_NJ">Prod NJ</choice>
+        <choice value="Alpha">Alpha</choice>
+        <choice value="Beta">Beta</choice>
+        <choice value="Prod_NY">Prod NY</choice>
+        <default>Dev,Prod_NJ,Alpha,Beta,Prod_NY</default>
+        <delimiter> </delimiter>
+      </input>
+      <chart depends="$four$">
+        <title>KPI4 Timechart</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$four$| timechart count</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <chart depends="$one$">
+        <title>KPI Timechart by</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$one$| timechart count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart depends="$two$">
+        <title>KP2 Timechart by</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$two$| timechart count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart depends="$three$">
+        <title>KP3 Timechart by</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$three$| timechart count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+      </chart>
+    </panel>
+    <panel>
+      <chart depends="$four$">
+        <title>KP4 Timechart by</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$four$| timechart count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="charting.chart">line</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table depends="$one$">
+        <title>KPI1 Stats 1st level</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$one$| stats count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <table depends="$two$">
+        <title>KPI2 Stats 1st level</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$two$| stats count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <table depends="$three$">
+        <title>KPI3 Stats 1st level</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$three$| stats count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <table depends="$four$">
+        <title>KPI4 Stats 1st level</title>
+        <search>
+          <query>index=_internal sourcetype=* index!=$four$| stats count by sourcetype</query>
+          <earliest>-60m@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table depends="$one$">
+        <title>KPI1 Stats 2nd level</title>
+        <search>
+          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <table depends="$two$">
+        <title>KPI2 Stats 2nd level</title>
+        <search>
+          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <table depends="$three$">
+        <title>KPI3 Stats 2nd level</title>
+        <search>
+          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <table depends="$four$">
+        <title>KPI4 Stats 2nd level</title>
+        <search>
+          <query>index=* OR index=_* sourcetype=* index!=$one$| stats count by index</query>
+          <earliest>-4h@m</earliest>
+          <latest>now</latest>
+        </search>
+        <format type="color" field="count">
+          <colorPalette type="list">[#65A637,#6DB7C6,#F7BC38,#F58F39,#D93F3C]</colorPalette>
+          <scale type="threshold">0,30,70,100</scale>
+        </format>
+      </table>
+    </panel>
+  </row>
+</form>
