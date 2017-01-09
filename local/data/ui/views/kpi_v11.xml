@@ -380,6 +380,7 @@
         <option name="charting.legend.placement">bottom</option>
       </chart>
     </panel>
+      
   </row>
   <row depends="$one$">
     <panel>
@@ -418,29 +419,7 @@
         <option name="showPager">1</option>
       </event>
     </panel>
-  </row>
-  <row depends="$three$">
-    <panel>
-      <input type="text" token="searchterm3">
-        <label>Search Filter</label>
-        <default>host=* *</default>
-        <initialValue>host=* *</initialValue>
-      </input>
-      <event>
-        <title>Events</title>
-        <search>
-          <query>index=_internal $searchterm3$</query>
-          <earliest>-60m@m</earliest>
-          <latest>now</latest>
-        </search>
-        <option name="count">5</option>
-        <option name="rowNumbers">0</option>
-        <option name="showPager">1</option>
-      </event>
-    </panel>
-  </row>
-  <row depends="$four$">
-    <panel>
+      <panel depends="$four$">
       <input type="text" token="searchterm4">
         <label>Search Filter</label>
         <default>host=* *</default>
@@ -459,4 +438,8 @@
       </event>
     </panel>
   </row>
+>
+
+
+  
 </form>
